@@ -1,21 +1,17 @@
 const assert = require('assert');
 const MarioChar = require('../models/mariochar');
 
-// Describe our tests
-describe('Saving records', function(){
+describe('Saving Records', function(){
 
-  // Create tests
-  it('Saves a record to the database', function(done){
-
-    const char = new MarioChar({
-      name: 'Mario'
+it('Saving record to the database',function(){
+    var myChars = new MarioChar({
+        name:'Mario',
+        weight:60
     });
 
-    char.save().then(function(){
-      assert(!char.isNew);
-      done();
+    myChars.save().then(function(done){
+        assert(myChars.isNew() == false);
+        done();
     });
-
-  });
-
+})
 });

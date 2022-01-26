@@ -1,27 +1,24 @@
 const assert = require('assert');
 const MarioChar = require('../models/mariochar');
 
-// Describe our tests
-describe('Deleting records', function(){
-  var char;
-  // Add a character to the db before each tests
-  beforeEach(function(done){
-    char = new MarioChar({
-      name: 'Mario'
-    });
-    char.save().then(function(){
-      done();
-    });
-  });
+describe('Deleting Records', function(){
+    var myChars;
+    this.beforeEach(function(done){
+        myChars = new MarioChar({
+            name:'Mario',
+            weight:60
+        });
 
-  // Create tests
-  it('Deletes a record from the database', function(done){
-    MarioChar.findOneAndRemove({name: 'Mario'}).then(function(){
-      MarioChar.findOne({name: 'Mario'}).then(function(result){
-        assert(result === null);
-        done();
-      });
-    });
-  });
-
+        myChars.save().then(function(){
+            done();
+        });
+    })
+    it('Deleting record from the database',function(done){
+        MarioChar.findOneAndRemove({name:'Mario'}).then(function(){
+            MarioChar.findOne({name:'Mario'}).then(function(result){
+                assert(result === null)
+                done();
+            })
+        })
+    })
 });
