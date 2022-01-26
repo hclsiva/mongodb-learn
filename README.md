@@ -12,3 +12,5 @@ npm install
 npm test
 
 Make sure local instance of mongodb is running with the url mongodb://localhost:27017/orderManagerDB
+
+Use Ctrl+c to quit the tests
